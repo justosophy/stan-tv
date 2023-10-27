@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Output of 'npm build'
+/dist/
+
+# TypeScript build output
+/tsconfig.tsbuildinfo
+
+# IDE files
+.vscode/
+.idea/
+
+# Editor configuration
+*.editorconfig
+
+# OS-specific files
+.DS_Store
+Thumbs.db
