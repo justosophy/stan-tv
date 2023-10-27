@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: black;
+    color: #fff;
+    --blue: #0099ff;
+    --muted: #888888;
+}
+
+.app {
+    max-width: min(1280px, 100vw - 2rem);
+    padding-top: 60px;
+    margin: 0 auto;
+}
+
+a {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 170px;
+    padding-bottom: 70px;
+    view-transition-name: nav;
+}
+
+nav .nav-items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--muted);
+    vertical-align: middle;
+    padding-bottom: 2px;
+}
+nav a.active {
+    color: white;
+}
+
+nav a:focus {
+    outline: none;
+    border-radius: 2px;
+    color: var(--blue);
+}
+
+
+.carousel {
+    width: calc((100vw - 100%) * 0.5 + 100% + (100vw * 0.5 / 6));
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 5px;
+    padding-bottom: 60px        ;
+}
+
+.carousel a {
+    display: block;
+    padding: 2px;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.carousel a:focus {
+    outline: solid 2px var(--blue);
+    border-radius: 2px;
+}
+
+.carousel img {
+    display: block;
+    pointer-events: none;
+    max-width: 412px;
+    width: 100%;
+    height: auto;
+}
+
+.carousel a.pad {
+    pointer-events: none;
+    visibility: hidden;
+    outline: none !important;
+}
+
+.program-image {
+    view-transition-name: program-image !important;
+}
+
+.program {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    min-width: 300px;
+    gap: 3rem;
+}
+.program-image-container {
+    width: fit-content;
+    /* max-width: 300px; */
+    display: flex;
+    justify-content: center;
+}
+
+.program img {
+    width: auto;
+    max-width: min(calc(100vw - 2rem), 500px);
+    margin: 0 auto;
+    /* max-width: 100%; */
+    height: auto;
+}
+
+.program-profile {
+    flex: 2;
+    max-width: 1180px;
+}
+
+.program-profile h2 {
+    font-size: 2.2rem;
+    line-height: 100%;
+    margin: 0;;
+}
+
+.program-metadata {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.program-metadata li {
+    margin: 0;
+    padding: 6px 0 0 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    line-height: 1.8em;
+}
+
+.program-metadata li:not(:first-child)::before {
+    content: "|";
+    display: block;
+    padding: 0 0.25rem;
+    flex-wrap: nowrap;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.program-description {
+    font-size: 1.2rem;
+    line-height: 1.8em;
+}
