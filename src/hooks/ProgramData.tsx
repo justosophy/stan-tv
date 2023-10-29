@@ -1,12 +1,26 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
-import { program } from '../types';
+import { program } from '../types/program';
 
-const ProgramDataContext = createContext<null | Array<program>>(null);
+export type ProgramDataContext = {
+    data: null | Array<program>,
+    error: null,
+    loading: boolean,
+}
+
+const ProgramDataContext = createContext<ProgramDataContext>({
+    data: null,
+    error: null,
+    loading: false,
+});
 
 const API_URL = 'https://raw.githubusercontent.com/StreamCo/tv-coding-challenge/master/data.json';
 
 export const ProgramDataProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-    const [programData, setProgramData] = useState(null);
+    const [programData, setProgramData] = useState({
+        data: null,
+        error: null,
+        loading: true,
+    });
     const fetchSent = useRef(false);
     useEffect(() => {
         if (fetchSent.current) {
@@ -22,10 +36,19 @@ export const ProgramDataProvider: React.FC<React.PropsWithChildren> = ({ childre
                 return response.json();
             })
             .then(data => {
-                setProgramData(data);
+                setProgramData({
+                    data,
+                    loading: false,
+                    error: null,
+                });
             })
             .catch(error => {
                 console.error('Error during fetch:', error);
+                setProgramData({
+                    data: null,
+                    loading: false,
+                    error,
+                });
             })
     }, []);
 

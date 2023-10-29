@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProgramDataContext } from '../hooks/ProgramData';
+import LoadingBox from '../components/LoadingBox';
 
 const Program: React.FC = () => {
   const { program_type = '', program_id = '' } = useParams<{ program_type: string, program_id: string }>();
 
   const programData = useProgramDataContext();
-  const program = programData?.find(({ type, id }) => type === program_type && id === parseInt(program_id, 10));
+  const program = programData.data?.find(({ type, id }) => type === program_type && id === parseInt(program_id, 10));
 
 
   useEffect(() => {
@@ -26,6 +27,11 @@ const Program: React.FC = () => {
   return (
     <>
       <div className="program">
+        {programData.loading && (
+          <div className="program-image-container">
+            <LoadingBox style={{ paddingTop: "148.95%", width: "500px" }} />
+          </div>
+        )}
         {program && (
           <div className="program-image-container">
             <img
@@ -37,6 +43,13 @@ const Program: React.FC = () => {
         )
         }
         <div className="program-profile">
+          {programData.loading && (
+            <>
+              <LoadingBox style={{ width: "33%" }} />
+              <LoadingBox style={{ width: "66%" }} />
+              <LoadingBox style={{ paddingTop: "26%" }} />
+            </>
+          )}
           {program && (
             <>
               <h2>{program.title}</h2>

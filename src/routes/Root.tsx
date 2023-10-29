@@ -22,7 +22,7 @@ const Root: React.FC = () => {
       requestAnimationFrame(() => { })
       setInitialPageFocus()
     }
-  }, [location, programData]);
+  }, [location, programData.data]);
 
   useFocusGroupControls();
 

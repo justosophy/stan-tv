@@ -5,7 +5,6 @@ import {
     Navigate,
 } from "react-router-dom";
 
-// import { ProgramDataContext, CursorGroupContext } from "./ProgramDataContext";
 import { ProgramDataProvider } from './hooks/ProgramData';
 
 import Root from './routes/Root';
